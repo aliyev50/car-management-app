@@ -7,6 +7,9 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
 
+const isSignedIn = require('./middleware/is-signed-in.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
+
 const authController = require('./controllers/auth.js');
 const carsController = require('./controllers/cars.js');
 
@@ -29,15 +32,23 @@ app.use(
   })
 );
 
+app.use(passUserToView);
+
 app.get('/', (req, res) => {
-  res.render('index.ejs', {
-    user: req.session.user,
-  });
+  // Check if the user is logged in
+  if (req.session.user) {
+    // Redirect logged-in users to their applications index
+    res.redirect(`/users/${req.session.user._id}/cars`);
+  } else {
+    // Show the homepage for users who are not logged in
+    res.render('index.ejs');
+  }
 });
 
 
 app.use('/auth', authController);
-app.use('/users/cars', carsController); // New!
+app.use(isSignedIn);
+app.use('/users/:userId/cars', carsController); // New!
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
