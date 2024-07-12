@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add a New App</title>
+</head>
+  <body>
+    <% include ../layouts/main %>
+    <%- include('../partials/_navbar.ejs') %>
+<h1>Add Car</h1>
+<form action="/users/<%= user._id %>/cars" method="POST">
+ 
+    <label for="make">Make:</label>
+    <input type="text" class="form-control" id="make" name="make" required>
+ 
+
+    <label for="model">Model:</label>
+    <input type="text" class="form-control" id="model" name="model" required>
+
+  
+    <label for="year">Year:</label>
+    <input type="number" class="form-control" id="year" name="year" required>
+
+  <button type="submit" class="btn btn-primary">Add Car</button>
+
+</form>
+  </body>
+</html>
