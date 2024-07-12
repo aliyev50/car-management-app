@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/user.js');
 
-router.get('/sign-up', (req, res) => {
-  res.render('auth/sign-up.ejs');
+router.get('/register', (req, res) => {
+  res.render('auth/register.ejs');
 });
 
 router.get('/sign-in', (req, res) => {
@@ -17,7 +17,7 @@ router.get('/sign-out', (req, res) => {
   res.redirect('/');
 });
 
-router.post('/sign-up', async (req, res) => {
+router.post('/register', async (req, res) => {
   try {
     // Check if the username is already taken
     const userInDatabase = await User.findOne({ username: req.body.username });
