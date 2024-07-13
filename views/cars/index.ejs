@@ -1,40 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cars</title>
 </head>
-<body>
-    <% include ../layouts/main %>
-<h1>Your Cars</h1>
-<a href="/users/<%=user._id%>/cars/new">Add Car</a>
-<table class="table mt-3">
-  <thead>
-    <tr>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% cars.forEach(car => { %>
-      <tr>
-        <td><%= car.make %></td>
-        <td><%= car.model %></td>
-        <td><%= car.year %></td>
-        <td>
-          <a href="/cars/edit/<%= car._id %>" class="btn btn-secondary btn-sm">Edit</a>
-          <form action="/cars/delete/<%= car._id %>" method="POST" class="d-inline">
-            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-          </form>
-        </td>
-      </tr>
-    <% }) %>
-  </tbody>
-</table>
-
-</body>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Your Cars</h1>
+    <a href="/users/<%=user._id%>/cars/new">Add an Car</a>
+    <table class="table mt-3">
+        <thead>
+          <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cars.forEach((car) => { %>
+            <tr>
+              <td><%= car.make %></td>
+              <td><%= car.model %></td>
+              <td><%= car.year %></td>
+              <td>
+                <a href="/cars/edit/<%= car._id %>" class="btn btn-secondary btn-sm">Edit</a>
+                <form action="/cars/delete/<%= car._id %>?_method=DELETE" method="POST" class="d-inline">
+                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+  </body>
 </html>
-   

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= car.title %></title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1><%= car.title %> at <%= car.company %></h1>
+  <% if (car.notes) { %>
+    <p>Notes: <%= application.notes %></p>
+  <% } %>
+  <% if (car.postingLink) { %>
+    <a href="<%= car.postingLink %>">Visit this job posting</a>
+  <% } %>
+  <p>The status of this application is: <%= application.status %></p>
+  <form
+    action="/users/<%= user._id %>/cars/<%= car._id %>?_method=DELETE"
+    method="POST"
+  >
+    <button type="submit">Delete this application</button>
+  </form>
+  
+</body>
+</html>
