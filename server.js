@@ -36,7 +36,7 @@ app.use(
     saveUninitialized: true,
   })
 );
-
+//comment
 app.use(passUserToView);
 
 app.get('/', (req, res) => {
