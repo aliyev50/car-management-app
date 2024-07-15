@@ -6,7 +6,8 @@ const User = require('../models/user.js');
   
   router.get('/', async (req, res) => {
     try {
-      const currentUser = await User.findById(req.session.user._id);
+      const currentUser = await User.findById(req.session.user._id); 
+      console.log("current user", currentUser);
       res.render('cars/index.ejs', {
         cars: currentUser.cars,
       });
@@ -25,8 +26,9 @@ const User = require('../models/user.js');
     try {
       const currentUser = await User.findById(req.session.user._id);
       currentUser.cars.push(req.body);
-      console.log(req.body)
-      await user.save();
+      console.log("BODY", req.body);
+      console.log("second user", currentUser);
+      await currentUser.save();
       res.redirect(`/users/${currentUser._id}/cars`);
     } catch (error) {
       res.redirect('/')
@@ -47,13 +49,21 @@ const User = require('../models/user.js');
   router.get('/:carId/edit', async (req, res) => {
     try {
       const currentUser = await User.findById(req.session.user._id);
-      const car = currentUser.applications.id(req.params.carId);
+      const car = currentUser.cars.id(req.params.carId);
       res.render('cars/edit.ejs', {
         car: car,
       });
     } catch (error) {
       res.redirect('/')
     }
+  });
+
+  router.put('/:carId', async (req, res) => {
+    const user = await User.findById(req.session.user._id);
+    const carItem = user.car.id(req.cars.itemId);
+    carItem.set(req.body);
+    await user.save();
+    res.redirect(`/users/${req.session.user._id}/cars`);
   });
 
 

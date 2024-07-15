@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url("https://shorturl.at/sg3qH");
+    background-image: url("https://shorturl.at/6rwbH");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -103,6 +103,10 @@ th, td {
 
   .delete:hover{
     background-color: #0056b3;
+  }
+
+  .edit {
+    color: #0056b3;
   }
 
   h4 {

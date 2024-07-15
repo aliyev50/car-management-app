@@ -29,8 +29,8 @@
                 <td data-th="Model"><%= car.model %></td>
                 <td data-th="Year"><%= car.year %></td>
                 <td>
-                  <button class="delete" href="/cars/edit/<%= car._id %>" class="btn btn-secondary btn-sm">Edit</button>
-                  <form action="/cars/delete/<%= car._id %>?_method=DELETE" method="POST" class="d-inline">
+                  <a class="edit" href="/users/<%= user._id %>/cars/<%= car._id %>/edit" class="btn btn-secondary btn-sm">Edit</a>
+                  <form  action="/users/<%= user._id %>/cars/<%= car._id %>?_method=DELETE" method="POST" style="display:inline;">
                     <button class="delete" type="submit" class="btn btn-danger btn-sm">Delete</button>
                   </form>
                 </td>
