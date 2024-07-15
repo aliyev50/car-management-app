@@ -33,4 +33,4 @@ Develop the app into a complete vehicle management system that not only tracks m
 
 **Smart Integration:** Work towards compatibility with connected car technologies, allowing for automatic data syncing directly from the vehicle to the app. For example, the app could automatically receive diagnostic trouble codes (DTCs) and maintenance alerts issued by the car's onboard computer.
 
-## **Screenshot of Car app:** _[Here]( )
+## **Screenshot of Car app:** _[Here](https://github.com/user-attachments/assets/de0a248e-9685-4466-b3ab-755be7d2fc9e)
