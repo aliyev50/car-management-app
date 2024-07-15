@@ -4,25 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add a New App</title>
+  <link rel="stylesheet" href="/stylesheets/add.css">
 </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-<h1>Add Car</h1>
+    <div class="container">
+    <div class="form-group">
+<h4>Add Car</h4>
 <form action="/users/<%= user._id %>/cars" method="POST">
  
-    <label for="make">Make:</label>
-    <input type="text" class="form-control" id="make" name="make" required>
+    
+    <input class="inputs" type="text" class="form-control" id="make" name="make" required placeholder="Make">
  
+    <input class="inputs" type="text" class="form-control" id="model" name="model" required placeholder="Model">
 
-    <label for="model">Model:</label>
-    <input type="text" class="form-control" id="model" name="model" required>
+    <input class="inputs" type="number" class="form-control" id="year" name="year" required placeholder="Year">
 
-  
-    <label for="year">Year:</label>
-    <input type="number" class="form-control" id="year" name="year" required>
-
-  <button type="submit" class="btn btn-primary">Add Car</button>
+  <button class="add" type="submit" class="btn btn-primary">Add Car</button>
 
 </form>
+</div>
+</div>
   </body>
 </html>

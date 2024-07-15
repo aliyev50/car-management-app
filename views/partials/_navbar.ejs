@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <% if (user) { %>
-            <a href="/users/<%= user._id %>/cars">My Cars</a>
-            <a href="/auth/sign-out">Sign Out</a>
-        <% } else { %>
-            <a href="/auth/sign-in">Sign in</a>
-            <a href="/auth/register">Register</a>
-        <% } %>
-    </nav>
+    <nav class="navbar">
+            <% if(user) { %>
+              <div class="navbar">
+                <h3 id="nav-header">Car Maintenance App</h3>
+                <div class="nav-links">
+                  <a class="authlink" href="/users/<%=user._id%>/cars">Your Cars</a>
+                  <a class="authlink" href="/auth/sign-out">Sign Out</a>
+                </div>
+              </div>
+              <% } else { %>
+                <div class="navbar">
+                  <h3 id="nav-header">Car Maintenance App</h3>
+                  <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a class="authlink" href="/auth/sign-in">Sign In</a>
+                    <a  class="authlink"href="/auth/register">Register</a>
+                  </div>
+                </div>
+                <% } %>
+          </nav>
 </body>
 </html>
   

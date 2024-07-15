@@ -5,12 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Cars</title>
+  <link rel="stylesheet" href="/stylesheets/cars.css">
 </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Your Cars</h1>
-    <a href="/users/<%=user._id%>/cars/new">Add an Car</a>
-    <table class="table mt-3">
+    <div class="container">
+   <div class="form-group">
+    <h4>Your Cars</h4>
+    <a class="a" href="/users/<%=user._id%>/cars/new">Add an Car</a>
+    
+    <table class="table">
         <thead>
           <tr>
             <th>Make</th>
@@ -19,20 +23,22 @@
           </tr>
         </thead>
         <tbody>
-          <% cars.forEach((car) => { %>
-            <tr>
-              <td><%= car.make %></td>
-              <td><%= car.model %></td>
-              <td><%= car.year %></td>
-              <td>
-                <a href="/cars/edit/<%= car._id %>" class="btn btn-secondary btn-sm">Edit</a>
-                <form action="/cars/delete/<%= car._id %>?_method=DELETE" method="POST" class="d-inline">
-                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                </form>
-              </td>
-            </tr>
-          <% }) %>
-        </tbody>
+            <% cars.forEach((car) => { %>
+              <tr>
+                <td data-th="Make"><%= car.make %></td>
+                <td data-th="Model"><%= car.model %></td>
+                <td data-th="Year"><%= car.year %></td>
+                <td>
+                  <button class="delete" href="/cars/edit/<%= car._id %>" class="btn btn-secondary btn-sm">Edit</button>
+                  <form action="/cars/delete/<%= car._id %>?_method=DELETE" method="POST" class="d-inline">
+                    <button class="delete" type="submit" class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
       </table>
+    </div>
+    </div>
   </body>
 </html>
